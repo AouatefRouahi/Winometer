@@ -1,0 +1,15 @@
+Dockerfile
+.dockerignore
+.git
+.cache
+*.pyc
+*.md
+Deployment-Steps.txt
+*.ipynb
+**/.ipynb_checkpoints
+venv2
+data
+ErrorHandling
+Viz
+iframe_figures
+modules

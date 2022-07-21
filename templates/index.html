@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Wine-o-meter</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Aouatef Rouahi">
+    <meta name="description" content="We used the style sheets provided by Bootstrap toolkit: https://getbootstrap.com/ ">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cheatsheet/">
+    <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cheatsheet.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <!-- header-->
+    <header class="bd-header bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
+        <div class="container-fluid d-flex align-items-center">
+            <h1 class="d-flex align-items-center fs-4 text-white mb-0">Artificial Sommelier API</h1>
+            <a href="https://github.com/AouatefRouahi/DS_Certification_Bloc_5" target="_blank" class="ms-auto link-light" hreflang="ar">API GitHub Repository</a>
+        </div>
+    </header>
+
+    <!-- right bar-->
+    <aside class="bd-aside sticky-xl-top text-muted align-self-start mb-3 mb-xl-5 px-2">
+        <nav class="small" id="toc">
+            <ul class="list-unstyled">
+                <li class="my-2">
+                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">Contents</button>
+                    <ul class="list-unstyled ps-3 collapse" id="contents-collapse">
+                        <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#documentation">Documentation</a></li>
+                        <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#gui">GUI</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- left side -->
+    <div class="bd-cheatsheet container-fluid bg-body">
+
+        <section id="content">
+            <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">Contents</h2>
+            <!-- documentation part -->
+            <article class="my-3" id="documentation">
+                <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+                    <h3>Documentation</h3>
+                </div>
+
+                <div>
+                    <div class="bd-example-snippet bd-code-snippet">
+                        <div class="bd-example">
+                            <p class="h2">Wine-o-meter API Documentation</p>
+                        </div>
+                    </div>
+
+                    <div class="bd-example-snippet bd-code-snippet">
+                        <div class="bd-example">
+                            <p class="lead">
+                                Wine-o-meter is a RESTful API that provides an artificial sommelier that can infer wine quality from its physico-chemical properties.<br> To evaluate the wine, you must specify the following parameters:
+                            </p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <ul>
+                                        <li>fixed acidity </li>
+                                        <li>volatile acidity </li>
+                                        <li>citric acid </li>
+                                        <li>residual sugar</li>
+                                        <li>chlorides </li>
+                                        <li>free sulfur dioxide </li>
+                                        <li>total sulfur dioxide </li>
+                                        <li>density </li>
+                                        <li>pH</li>
+                                        <li>sulphates </li>
+                                        <li>alcohol </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="lead">
+                                The API returns one unique quality score for that specific wine.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <ul>
+                                        <li>0 to 4 : poor quality </li>
+                                        <li>5 to 7 : average quality</li>
+                                        <li>8 to 10 : good quality </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <!-- accordion start -->
+                            <div class="bd-example">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h4 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							<span class="badge rounded-pill bg-success">POST </span> /predict Endpoint
+						      </button>
+                                        </h4>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <code>Request URL</code> &emsp;&emsp;https://wineometer-ar.herokuapp.com/predict <br>
+                                                <code>Parameters (*: required)</code> <br>
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <ul>
+                                                            <li>fixed acidity <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>volatile acidity <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>citric acid <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>residual sugar <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>chlorides <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>free sulfur dioxide <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>total sulfur dioxide <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>density <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>pH <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>sulphates <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                            <li>alcohol <span class="badge rounded-pill bg-danger">* Float</span></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                The input request must be formatted as a dictionary with one (key, value) pair (<code>{key:value}</code>).<br>
+                                                The key must be a string equal to "input" (<code>{"input":value}</code>).<br>
+                                                The value must be one list of lists (<code>{"input":[[p1, p2, ..., p11],[p1, p2, ..., p11],..,[p1, p2, ..., p11]]}</code>)<br>
+                                                Each list in the outer list represents one wine to be evaluated and must contain 11 float parameters equivalent to the 11 required features.<br>
+                                                At least, one list should be supplied with all the 11 required parameters.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h4 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Python
+						      </button>
+                                        </h4>
+                                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>JSON Simple Input</strong><br>
+                                                <code>
+				        	import requests <br>
+						<br>
+						url = "https://wineometer-ar.herokuapp.com/predict" <br>
+						<br>	
+						simple_input = {<br>
+						    "input": [[5.0, 0.98, 0.32, 18.9, 0.050, 75.0, 122.0, 0.401, 3.1, 0.21, 1.2]]<br>
+						}<br>
+						<br>
+						res = requests.post(url, json=simple_input)<br>
+                                                <br>
+						print(res.json())<br>
+				        </code> <br> &emsp;&emsp;&emsp;&emsp;
+                                                <span class="badge rounded-pill bg-info text-dark">Response Example</span>
+                                                <code>
+				        	{'Prediction': [5]}, status code:200
+				        </code> <br>
+                                                <br>
+                                                <br>
+                                                <strong>JSON Multiple Input</strong><br>
+                                                <code>
+				        	import requests <br>
+						<br>
+						url = "https://wineometer-ar.herokuapp.com/predict" <br>
+						<br>
+						multiple_input = {
+						    "input": [[7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8],<br>
+							    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[5.0, 0.98, 0.32, 18.9, 0.050, 75.0, 122.0, 0.401, 3.1, 0.21, 1.2]]}<br>
+												<br>
+						res = requests.post(url, json=multiple_input)<br>
+                                                <br>
+						print(res.json())<br>
+				        </code> <br> &emsp;&emsp;&emsp;&emsp;
+                                                <span class="badge rounded-pill bg-info text-dark">Response Example</span>
+                                                <code>
+				        	{'Prediction': [6,5]}, status code:200
+				        </code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h4 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							CLI 
+						      </button>
+                                        </h4>
+                                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Simple Input</strong><br>
+                                                <code>
+				        	$curl -i -H "Content-Type: application/json" -X POST -d '{"input": [[7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8]]}' https://wineometer-ar.herokuapp.com/predict
+				        </code>
+                                                <br><br> &emsp;&emsp;&emsp;&emsp;
+                                                <span class="badge rounded-pill bg-info text-dark">Response Example</span>
+                                                <code>
+				        	{'Prediction': [5]}, status code:200
+				        </code> <br>
+                                                <br>
+                                                <strong>Multiple Input</strong><br>
+                                                <code>
+						$curl -i -H "Content-Type: application/json" -X POST -d '{"input": [[7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8],[5.0, 0.98, 0.32, 18.9, 0.050, 75.0, 122.0, 0.401, 3.1, 0.21, 1.2]]}' https://wineometer-ar.herokuapp.com/predict
+				        </code> <br><br> &emsp;&emsp;&emsp;&emsp;
+                                                <span class="badge rounded-pill bg-info text-dark">Response Example</span>
+                                                <code>
+				        	{'Prediction': [6,5]}, status code:200
+				        </code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h4 class="accordion-header" id="headingFour">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							 <span class="badge rounded-pill bg-warning text-dark">Errors </span> Handling
+						      </button>
+                                        </h4>
+                                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                            	Predictions can only be obtained correctly if the input request is formatted as described above. 
+                                            	Nonetheless, error handlers have been developed to assist you when your input request does not match the description.<br>
+                                                If an error occurs, you will be given an accurate description of the error in the json format to help you correct your input request.<br>
+                                                You find in the error description:
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <ul>
+                                                            <li>The Status Code</li>
+                                                            <li>The Error Type </li>
+                                                            <li>An Accurate Description of the Error</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <strong>Example:</strong><br>
+                                                <code>{'error': '500 Internal Server Error: Incompatible Key Error!! No key is supplied!!'}
+</code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- accordion end -->
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GUI part -->
+            <article class="my-3" id="gui">
+                <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+                    <h3>GUI</h3>
+                </div>
+
+                <div>
+                    <div class="bd-example-snippet bd-code-snippet">
+                        <div class="bd-example">
+                            We also offer a <strong>user-friendly graphical user interface(GUI)</strong> to enable you to check visually the evaluation process. First, you must set the different properties of the wine that you want to rate. Once done, you can request the evaluation as a score between 0 and 10. <br> <br>
+                            <form action="{{url_for('gui', _anchor='gohere')}}" method="post">
+                                <div class="mb-3">
+                                    <input class="form-control form-control-sm" type="text" name="fixed-acidity" placeholder="Fixed Acidity" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="volatile-acidity" placeholder="Volatile Acidity" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="citric-acid" placeholder="Citric Acid" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="residual-sugar" placeholder="Residual Sugar" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="chlorides" placeholder="Chlorides" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="free-sulfur-dioxide" placeholder="Free Sulfur Dioxide" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="total-sulfur-dioxide" placeholder="Total Sulfur Dioxide" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="density" placeholder="Density" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="pH" placeholder="PH" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="sulphates" placeholder="Sulphates" required="required" /><br>
+                                    <input class="form-control form-control-sm" type="text" name="alcohol" placeholder="Alcohol" required="required" /><br>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-primary"> Generate </button> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                    <button type="reset" class="btn btn-secondary"> Clear </button>
+                                </div>
+                                <hr>
+                                <div class="alert alert-success" role="alert" id="gohere">
+									<strong>Python</strong><br>
+                                    <p> 
+                                        <code>
+				        	import requests <br>
+						<br>
+						url = "https://wineometer-ar.herokuapp.com/predict" <br>
+						<br>	
+						my_input = {<br>
+						    "input": {{ input_ }}<br>
+						}<br>
+						<br>
+						result = requests.post(url, json=my_input)<br>
+                                                <br>
+						print(result.json())<br>
+				        </code> <br> 
+										<strong>CLI</strong><br>
+										<code>
+										$curl -i -H "Content-Type: application/json" -X POST -d '{"input": {{ input_ }}}' https://wineometer-ar.herokuapp.com/predict</code>
+										<br><br>
+										<strong>Quality Score Prediction</strong><br>
+ </p>
+                                    <p>{{ prediction_text }}</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <script src="../static/assets/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

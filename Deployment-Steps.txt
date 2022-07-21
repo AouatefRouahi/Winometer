@@ -1,0 +1,105 @@
+------------------------------------------------------------------------------------------------------
+-------------------------------------------Build the API------------------------------------------
+------------------------------------------------------------------------------------------------------
+Flask APP
+HTML and CSS templates
+
+
+------------------------------------------------------------------------------------------------------
+-------------------------------------------Check with DOCKER------------------------------------------
+------------------------------------------------------------------------------------------------------
+Docker CLI installed
+Docker Account
+
+0) login to your docker account
+	> docker login
+	
+1) Build a docker image
+
+	You need:
+		a flask app
+		a requirements file
+		a Dockerfile
+		a Dockerignore 
+		
+
+	> docker build -t user-name/winometer-ar .
+	> docker images
+		
+2) Run a docker container to test the built docker image locally
+
+	> docker run -p 5000:5000 -d user-name/winometer-ar
+	> docker ps
+	
+	check localhost:5000 
+	
+3) Explore the container build context
+
+	> docker exec -t -i id-running-container /bin/bash
+	> docker stop id-running-container
+	
+4) Push the docker image to Dokcer Hub
+
+	> docker push user-name/winometer-ar
+	
+
+
+------------------------------------------------------------------------------------------------------
+-------------------------------------------Push to GITHUB------------------------------------------
+------------------------------------------------------------------------------------------------------
+git installed
+git ssh key to login to your github account
+a remote repository
+
+0) login using ssh keys to your github account
+	
+	> ssh -T git@github.com
+	> git init
+	> git remote add origin git@github.com:AouatefRouahi/DS_Certification_Bloc_5.git
+	> git status
+	> git add .
+	> git commit -m "version:2"
+	> git show-ref
+	> git push -u origin master
+	
+------------------------------------------------------------------------------------------------------
+-------------------------------------------Deploy to HEROKU with DOCKER/GIT---------------------------
+------------------------------------------------------------------------------------------------------
+Heroku CLI installed
+gunicorn installed
+Heroku Account
+
+0) login to your Heroku Account & Heroku Container Registry
+
+	> heroku login
+	> heroku container:login
+	
+1) deploy an existing docker image to heroku
+	you need:
+		a Procfile that specifies the main parameters to deploy to heroku using the Gunicorn web server
+			process-type: gunicorn flask-instance-name:app
+			web: gunicorn app:app
+	
+	> docker tag docker-image-id registry.heroku.com/wineometer-ar/web 
+	> docker images
+	> docker push registry.heroku.com/wineometer-ar/web
+	> heroku container:release web --app=wineometer-ar
+	
+	
+2) deploy with git
+
+	> heroku create wineometer-ar
+	> git init
+	> heroku git:remote -a wineometer-ar
+	> git status
+	> git add .
+	> git commit -m "winometer deployment to heroku"
+	> git push heroku master
+	> heroku open
+	> heroku logs
+
+	check the supplied IP@ allocated to your web app by heroku
+	
+	
+	
+	
